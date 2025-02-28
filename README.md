@@ -40,10 +40,10 @@ Customer Support: Answering customer queries based on large document datasets.
 
 Content Generation: Summarizing or generating new content based on vast knowledge bases.
 
-Future Enhancements
+Future Enhancements:
 
 Model Performance Metrics: Planned refinements to include standard evaluation metrics like BLEU, F1 score, etc.
 
 Optimization: Further model fine-tuning and performance benchmarking to enhance retrieval accuracy and generation quality.
 
-Frontend UI: Developing a React.js-based frontend for a user-friendly interface, allowing users to interact with the system and visualize retrieved documents and generated summaries easily. This will provide a complete full-stack experience, from backend API to frontend deployment
+Frontend UI: Developing a React.js-based frontend for a user-friendly interface, allowing users to interact with the system and visualize retrieved documents and generated summaries easily. This will provide a complete full-stack experience, from backend API to frontend deployment.
