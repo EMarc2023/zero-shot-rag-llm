@@ -62,4 +62,8 @@ docker build -t rag-llm .
 ```bash
 docker run -p 8000:8000 rag-llm
 ```
+## Known Issues / Limitations
 
+1. **Performance**: The system can experience slower response times, particularly with larger datasets or complex queries. This is due to the reliance on CPU optimisation and retrieval processes.
+2. **Summarisation Artefacts**: BART's summarisation may introduce minor artefacts that don't always align conceptually. These artefacts are generally minimal but may require further refinement for more complex data.
+3. **Response Formatting**: Some responses may contain unwanted characters (e.g., extra slashes or newline characters) due to tokenisation and generation processes.
