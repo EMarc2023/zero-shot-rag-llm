@@ -22,6 +22,7 @@ This project can be applied to industries that require efficient AI-driven knowl
 Enterprise Solutions: Automating document analysis and retrieval.
 Customer Support: Answering customer queries based on large document datasets.
 Content Generation: Summarizing or generating new content based on vast knowledge bases.
+
 Future Enhancements
 Model Performance Metrics: Planned refinements to include standard evaluation metrics like BLEU, F1 score, etc.
 Optimization: Further model fine-tuning and performance benchmarking to enhance retrieval accuracy and generation quality.
