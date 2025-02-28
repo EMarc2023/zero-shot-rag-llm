@@ -1,9 +1,11 @@
 # zero-shot-rag-llm
 
 Project Overview
+
 Developed a production-grade Retrieval Augmented Generation (RAG) system using the Amazon Review 2023 dataset. The system leverages cutting-edge NLP techniques for knowledge retrieval and document summarization with minimal training data requirements.
 
 Key Technologies
+
 HuggingFace Transformers: For pre-trained transformer models used in both retrieval and generation tasks.
 FAISS: Efficient similarity search for fast document retrieval at scale.
 LangChain: For orchestrating RAG-style workflows with language models.
@@ -20,10 +22,12 @@ Applications
 This project can be applied to industries that require efficient AI-driven knowledge retrieval and document summarization, such as:
 
 Enterprise Solutions: Automating document analysis and retrieval.
+
 Customer Support: Answering customer queries based on large document datasets.
 Content Generation: Summarizing or generating new content based on vast knowledge bases.
 
 Future Enhancements
+
 Model Performance Metrics: Planned refinements to include standard evaluation metrics like BLEU, F1 score, etc.
 Optimization: Further model fine-tuning and performance benchmarking to enhance retrieval accuracy and generation quality.
 Frontend UI: Developing a React.js-based frontend for a user-friendly interface, allowing users to interact with the system and visualize retrieved documents and generated summaries easily. This will provide a complete full-stack experience, from backend API to frontend deployment
