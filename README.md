@@ -20,5 +20,5 @@ Developed a **production-grade Retrieval Augmented Generation (RAG) system** usi
 
 ## Access & Execution
 - **Dockerization**: The project is fully containerized. To run the application, simply clone the repository and build the Docker image:
-  docker build -t rag-llm .
-  docker run -p 8000:8000 rag-llm
+  *** docker build -t rag-llm .
+  *** docker run -p 8000:8000 rag-llm
