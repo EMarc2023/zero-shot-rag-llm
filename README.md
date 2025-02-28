@@ -1,14 +1,14 @@
 # Zero-Shot RAG-LLM: Amazon Review 2023 Dataset
 
 ## Project Overview
-Developed a **production-grade Retrieval Augmented Generation (RAG) system** using the **Amazon Review 2023 dataset**. The system leverages cutting-edge NLP techniques for **knowledge retrieval** and **document summarization** with minimal training data requirements.
+Developed a **production-grade Retrieval Augmented Generation (RAG) system** using a subset (Gift Cards) of the **Amazon Review 2023 dataset**. The system leverages cutting-edge NLP techniques for **knowledge retrieval** and **document summarisation** with minimal training data requirements.
 
 ## Key Technologies
 - **HuggingFace Transformers**: For pre-trained transformer models used in both retrieval and generation tasks.
 - **FAISS**: Efficient similarity search for fast document retrieval at scale.
 - **LangChain**: For orchestrating RAG-style workflows with language models.
 - **FastAPI**: Deployed as a production-ready web application for API access to the RAG system.
-- **Docker**: Containerized the entire application for consistency and scalability.
+- **Docker**: Containerised the entire application for consistency and scalability.
 - **CI/CD**: Fully automated deployment pipeline with tests, linting, and Docker integration for streamlined development and production flow.
 
 ## Project Features
@@ -20,5 +20,7 @@ Developed a **production-grade Retrieval Augmented Generation (RAG) system** usi
 
 ## Access & Execution
 - **Dockerization**: The project is fully containerized. To run the application, simply clone the repository and build the Docker image:
-  *** docker build -t rag-llm .
-  *** docker run -p 8000:8000 rag-llm
+  
+  docker build -t rag-llm .
+
+  docker run -p 8000:8000 rag-llm
