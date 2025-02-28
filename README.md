@@ -2,7 +2,7 @@
 
 ## Project Overview
 - The application is Dockerised and deployed via FastAPI, ensuring scalability and modularity. It is production-ready for smaller to medium-scale deployments and can be further optimised for high-traffic, enterprise-level environments with more robust deployment options such as NGINX as a reverse proxy or using production-grade ASGI servers like Gunicorn.
-- This application is a CPU-optimised Retrieval Augmented Generation (RAG) system using a subset (Gift Cards) of the Amazon Review 2023 dataset. The system leverages cutting-edge NLP techniques for efficient knowledge retrieval and document summarisation, achieving robust performance with minimal task-specific training data.
+- This application is a CPU-optimised Retrieval Augmented Generation (RAG) system using a subset of the Amazon Review 2023 dataset, i.e. the Gift Cards dataset. The system leverages cutting-edge NLP techniques for efficient knowledge retrieval and document summarisation, achieving robust performance with minimal task-specific training data.
 
 ## Key Technologies
 
@@ -25,8 +25,9 @@ The application is Dockerised and deployed via FastAPI, ensuring scalability, mo
 
 ## Code Quality & Maintenance
 
-- **Pylint Score**: 10/10 (Ensures clean, maintainable code)
-- **CI/CD Pipeline**: Fully automated with unit tests, linting, and Docker integration. **Build time**: ~11 minutes.
+- **Pylint Score**: 10/10 (ensures clean, maintainable code)
+- **CI/CD Pipeline**: Fully automated with unit tests, linting, and Docker integration.
+- **Build time**: ~11 minutes (on Github Actions).
 
 ## Applications
 
