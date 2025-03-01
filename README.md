@@ -1,4 +1,5 @@
 # Zero-Shot RAG-LLM: Amazon Review 2023 Dataset
+This project is created and written by Elizabeth Marcellina.
 
 ## Project Overview
 - The application is Dockerised and deployed via FastAPI, ensuring scalability and modularity. It is production-ready for smaller to medium-scale deployments and can be further optimised for high-traffic, enterprise-level environments with more robust deployment options such as NGINX as a reverse proxy or using production-grade ASGI servers like Gunicorn.
