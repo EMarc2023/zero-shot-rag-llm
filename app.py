@@ -52,7 +52,6 @@ async def init():
 
     # Load BART summariser
     print("Loading Bart summariser...")
-    # bart_pipeline = pipeline("summarization", model=summariser_model)
     bart_tokenizer = BartTokenizer.from_pretrained("facebook/bart-base")
     bart_model = BartForConditionalGeneration.from_pretrained("facebook/bart-base")
 
@@ -63,16 +62,6 @@ async def init():
     llm = AutoModelForCausalLM.from_pretrained(llm_model_name, device_map="auto")
     tokenizer = AutoTokenizer.from_pretrained(llm_model_name)
     llm = torch.compile(llm)  # Optimize model execution
-
-
-# def summarize_context_bart(context):
-#    """Summarizes the context using BART base."""
-#    if len(context.split()) > 1000:
-#        context = " ".join(context.split()[:1000])
-#    print("Summarising with Bart. Please wait...")
-#    summary = bart_pipeline(context, MAX_LENGTH_SUMMARY, min_length=40, do_sample=False)
-#    clean_summary = summary[0]["summary_text"]
-#    return clean_summary
 
 
 def summarize_context_bart(context):
@@ -239,10 +228,6 @@ def answer_with_default_prompt():
 def answer(query: str, method: str = Query("bart", enum=["bart", "truncate"])):
     """Get an answer from the LLM using the summary only."""
     summary = summarise_or_truncate(query, method)
-    # input_text = f"Query: {query} Summary: {summary}\
-    # (short bullet points only for the output) Output:"
-    # input_text = f"Query: {query} Summary: {summary} Output:"
-    # cleaned_response = generate_response_with_llm(input_text)
     cleaned_response = generate_response_with_llm(summary)
     return {"query": query, "summary": summary, "cleaned_response": cleaned_response}
 
