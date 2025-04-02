@@ -9,7 +9,7 @@ This project is created and written by Elizabeth Marcellina.
 - **HuggingFace transformers**: Pre-trained transformer models used in both retrieval and generation tasks.
 - **FAISS**: Efficient similarity search for fast, scalable document retrieval even for large-scale applications.
 - **LangChain**: Orchestrates RAG-style workflows, enabling dynamic interaction between retrieval and generation components.
-- **all-MiniLM-L6-v2**: Converts the text into vectors.
+- **all-MiniLM-L6-v2**: Converts the text into vectors (embeddings).
 - **BART**: Summarises contextual data from documents retrieved via FAISS. Alternatively, context sentences can be truncated using the API provided in the app.
 - **TinyLlama**: Handles tokenisation for both truncating context sentences and inputting the prompt to the model for question answering.
 - **FastAPI**: Deployed as a production-ready web application, providing an API interface to the RAG system.
