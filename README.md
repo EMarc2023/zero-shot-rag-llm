@@ -64,32 +64,41 @@ One can then access the interactive API documentation provided by FastAPI at [ht
 ## Architectural Diagrams
 ### `app.py`
 ```mermaid
-graph LR
-    A[User Query] --> B(FastAPI API);
-    B --> C{LangChain RAG};
-    C --> D[all-MiniLM-L6-v2 Embeddings];
-    D --> E[FAISS Vector Search];
-    E --> F[Retrieved Documents];
-    F --> G{Summarize or Truncate};
-    G -- BART --> H[BART Summarization];
-    G -- Truncate --> I[Truncate Context];
-    H --> J[TinyLlama Tokenization];
-    I --> J;
-    J --> K[TinyLlama Question Answering];
-    K --> L[API Response];
-    L --> A;
+    A[Push/Pull Request to main] --> B{Lint};
+    B --> C{Black};
+    C --> D{Test};
+    D --> E{Docker Build};
 
-    subgraph RAG Workflow
-        C --> D;
-        D --> E;
-        E --> F;
-        F --> G;
-        G --> H;
-        G --> I;
-        H --> J;
-        I --> J;
-        J --> K;
+    subgraph Jobs
+      B;
+      C;
+      D;
+      E;
     end
+
+    subgraph Stages
+      F[Linting Stage];
+      G[Formatting Stage];
+      H[Testing Stage];
+      I[Docker Build Stage];
+    end
+
+    B --> F;
+    C --> G;
+    D --> H;
+    E --> I;
+
+    style B fill:#f9f,stroke:#333,color:#000,stroke-width:2px;
+    style C fill:#ccf,stroke:#333,color:#000,stroke-width:2px;
+    style D fill:#9f9,stroke:#333,color:#000,stroke-width:2px;
+    style E fill:#ff9,stroke:#333,color:#000,stroke-width:2px;
+    style F color:#fff;
+    style G color:#fff;
+    style H color:#fff;
+    style I color:#fff;
+    style A color:#000;
+    style Jobs color:#fff;
+    style Stages color:#fff;
 ```
 
 ### CI/CD pipeline (`.github/workflows/main.yml`)
