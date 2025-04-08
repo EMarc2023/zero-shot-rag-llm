@@ -119,10 +119,15 @@ graph TD
     D --> H;
     E --> I;
 
-    style B fill:#f9f,stroke:#333,stroke-width:2px;
-    style C fill:#ccf,stroke:#333,stroke-width:2px;
-    style D fill:#9f9,stroke:#333,stroke-width:2px;
-    style E fill:#ff9,stroke:#333,stroke-width:2px;
+    style B fill:#f9f,stroke:#333,color:#000,stroke-width:2px;
+    style C fill:#ccf,stroke:#333,color:#000,stroke-width:2px;
+    style D fill:#9f9,stroke:#333,color:#000,stroke-width:2px;
+    style E fill:#ff9,stroke:#333,color:#000,stroke-width:2px;
+    style F color:#000;
+    style G color:#000;
+    style H color:#000;
+    style I color:#000;
+    style A color:#000;
 ```
 
 ## Known Issues and Limitations
