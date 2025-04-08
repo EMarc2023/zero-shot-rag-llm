@@ -1,5 +1,5 @@
-# Zero-Shot RAG-LLM: Amazon Review 2023 Dataset
-This project is created and written by Elizabeth Marcellina.
+# Zero-Shot Retrieval Augmented Generation (RAG)-LLM: Amazon Review 2023 Dataset
+This project is created and written by Elizabeth Marcellina. This question answering chatbot software is scalable, CPU-efficient RAG-LLM application, deployable from laptops to enterprise environments
 
 ## Project Overview
 - The application is Dockerised and deployed via FastAPI, ensuring scalability and modularity. It is production-ready for smaller to medium-scale deployments. It can also be further optimised for high-traffic, enterprise-level environments with more robust deployment options such as NGINX as a reverse proxy or using large-scale production-grade ASGI servers like Gunicorn.
@@ -30,7 +30,6 @@ The application is Dockerised and deployed via FastAPI, ensuring scalability, mo
 
 ## Applications
 This project is highly relevant for industries requiring efficient AI-driven knowledge retrieval and document summarisation, including:
-
 - **Enterprise solutions**: Automating document analysis and retrieval processes.
 - **Customer support**: Providing automated answers to customer queries based on extensive document datasets.
 - **Content generation**: Summarising or generating new content derived from vast knowledge bases added by the user.
@@ -41,9 +40,8 @@ This project is highly relevant for industries requiring efficient AI-driven kno
 - **Frontend UI**: Development of a React.js-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. This will complete the full-stack experience, from backend API to frontend deployment.
 
 ## Access & Execution
-
 ### Dockerisation
-The project is fully containerised. To run the application, simply clone the repository.
+The project is fully containerised. To run the application, simply clone the repository and follow the following steps:
 
 #### Running the FastAPI app:
 ```bash
@@ -63,7 +61,7 @@ To access the API documentation, first run this app, either via FastAPI or Docke
 
 One can then access the interactive API documentation provided by FastAPI at [http://localhost:8000/docs](http://localhost:8000/docs). This provides a live interface for testing all available endpoints.
 
-## Architectural Diagram
+## Architectural Diagrams
 ### `app.py`
 ```mermaid
 graph LR
