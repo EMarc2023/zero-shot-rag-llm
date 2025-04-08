@@ -6,7 +6,7 @@ This project is created and written by Elizabeth Marcellina. This question answe
 - This application is a CPU-optimised Retrieval Augmented Generation (RAG) system using a subset of the Amazon Review 2023 dataset, i.e. the Gift Cards dataset. The system leverages cutting-edge Natural Language Processing (NLP) techniques for efficient knowledge retrieval and document summarisation, achieving robust performance with minimal task-specific training data.
 
 ## Key Technologies
-- **HuggingFace transformers**: Pre-trained transformer models used in both retrieval and generation tasks.
+- **Hugging Face transformers**: Pre-trained transformer models used in both retrieval and generation tasks.
 - **FAISS**: Efficient similarity search for fast, scalable document retrieval even for large-scale applications.
 - **LangChain**: Orchestrates RAG-style workflows, enabling dynamic interaction between retrieval and generation components.
 - **all-MiniLM-L6-v2**: Converts the text into vectors (embeddings).
