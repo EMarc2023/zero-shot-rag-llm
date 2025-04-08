@@ -69,16 +69,14 @@ config:
       theme: redux
 ---
 graph LR
-    A[User Request] --> B{API Endpoint};
+    A[User prompt] --> B{API Endpoint};
 
     B -- /answer_with_user_prompts/ --> Y{summarise_or_truncate};
-    Y -- request.method=bart --> Z[BART Summarisation];
+    Y -- request.method=bart --> Z[BART summarisation];
     Y -- request.method=truncate --> AA[Truncate context];
     Z --> AB[Construct input text];
     AA --> AB;
-    AB --> AC[Generate response with TinyLlama];
-    AC --> AD[Clean response];
-    AD --> AE[Return cleaned response];
+    AB --> AC[Answer with TinyLlama];
 
 B -- Other APIs --> AF[Other APIs for testing etc.];
 ```
