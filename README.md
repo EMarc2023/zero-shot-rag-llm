@@ -68,7 +68,7 @@ One can then access the interactive API documentation provided by FastAPI at [ht
 config:
       theme: redux
 ---
-graph TD
+graph LR
     A[User Request] --> B{API Endpoint};
 
     B -- /answer_with_user_prompts/ --> Y{summarise_or_truncate};
@@ -79,9 +79,9 @@ graph TD
     AB --> AC[Generate response with TinyLlama];
     AC --> AD[Clean response];
     AD --> AE[Return cleaned response];
-```
-B -- Other APIs --> AF[Other APIs for testing etc.];
 
+B -- Other APIs --> AF[Other APIs for testing etc.];
+```
 ### CI/CD pipeline (`.github/workflows/main.yml`)
 ```mermaid
 ---
