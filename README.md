@@ -94,7 +94,7 @@ graph LR
     end
 ```
 
-### CI/CD pipeline (`.github\workflows\main.yml`)
+### CI/CD pipeline (`.github/workflows/main.yml`)
 ```mermaid
 graph TD
     A[Push/Pull Request to main] --> B{Lint};
