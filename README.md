@@ -63,6 +63,9 @@ One can then access the interactive API documentation provided by FastAPI at [ht
 
 ## Architectural Diagrams
 ### `app.py`
+
+
+### CI/CD pipeline (`.github/workflows/main.yml`)
 ```mermaid
 graph LR
     A[Push/Pull Request to main] --> B{Lint};
@@ -97,47 +100,9 @@ graph LR
     style G color:#fff;
     style H color:#fff;
     style I color:#fff;
-    style A color:#000;
+    style A color:#fff;
     style Jobs color:#fff;
     style Stages color:#fff;
-```
-
-### CI/CD pipeline (`.github/workflows/main.yml`)
-```mermaid
-graph TD
-    A[Push/Pull Request to main] --> B{Lint};
-    B --> C{Black};
-    C --> D{Test};
-    D --> E{Docker Build};
-
-    subgraph Jobs
-        B;
-        C;
-        D;
-        E;
-    end
-
-    subgraph Stages
-        F[Linting Stage];
-        G[Formatting Stage];
-        H[Testing Stage];
-        I[Docker Build Stage];
-    end
-
-    B --> F;
-    C --> G;
-    D --> H;
-    E --> I;
-
-    style B fill:#f9f,stroke:#333,color:#000,stroke-width:2px;
-    style C fill:#ccf,stroke:#333,color:#000,stroke-width:2px;
-    style D fill:#9f9,stroke:#333,color:#000,stroke-width:2px;
-    style E fill:#ff9,stroke:#333,color:#000,stroke-width:2px;
-    style F color:#000;
-    style G color:#000;
-    style H color:#000;
-    style I color:#000;
-    style A color:#000;
 ```
 
 ## Known Issues and Limitations
