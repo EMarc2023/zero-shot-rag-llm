@@ -65,7 +65,7 @@ One can then access the interactive API documentation provided by FastAPI at [ht
 
 ## Architectural Diagram
 ### `app.py`
-```
+```mermaid
 graph LR
     A[User Query] --> B(FastAPI API);
     B --> C{LangChain RAG};
@@ -95,7 +95,7 @@ graph LR
 ```
 
 ### CI/CD pipeline (`.github\workflows\main.yml`)
-```
+```mermaid
 graph TD
     A[Push/Pull Request to main] --> B{Lint};
     B --> C{Black};
