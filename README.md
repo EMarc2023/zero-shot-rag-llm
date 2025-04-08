@@ -64,23 +64,24 @@ One can then access the interactive API documentation provided by FastAPI at [ht
 ## Architectural Diagrams
 ### `app.py`
 ```mermaid
+graph LR
     A[Push/Pull Request to main] --> B{Lint};
     B --> C{Black};
     C --> D{Test};
     D --> E{Docker Build};
 
     subgraph Jobs
-      B;
-      C;
-      D;
-      E;
+        B;
+        C;
+        D;
+        E;
     end
 
     subgraph Stages
-      F[Linting Stage];
-      G[Formatting Stage];
-      H[Testing Stage];
-      I[Docker Build Stage];
+        F[Linting Stage];
+        G[Formatting Stage];
+        H[Testing Stage];
+        I[Docker Build Stage];
     end
 
     B --> F;
@@ -110,17 +111,17 @@ graph TD
     D --> E{Docker Build};
 
     subgraph Jobs
-      B;
-      C;
-      D;
-      E;
+        B;
+        C;
+        D;
+        E;
     end
 
     subgraph Stages
-      F[Linting Stage];
-      G[Formatting Stage];
-      H[Testing Stage];
-      I[Docker Build Stage];
+        F[Linting Stage];
+        G[Formatting Stage];
+        H[Testing Stage];
+        I[Docker Build Stage];
     end
 
     B --> F;
