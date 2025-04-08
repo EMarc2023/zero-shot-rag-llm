@@ -63,10 +63,31 @@ One can then access the interactive API documentation provided by FastAPI at [ht
 
 ## Architectural Diagrams
 ### `app.py`
+```mermaid
+---
+config:
+      theme: redux
+---
+graph TD
+    A[User Request] --> B{API Endpoint};
 
+    B -- /answer_with_user_prompts/ --> Y{summarise_or_truncate};
+    Y -- request.method=bart --> Z[BART Summarisation];
+    Y -- request.method=truncate --> AA[Truncate context];
+    Z --> AB[Construct input text];
+    AA --> AB;
+    AB --> AC[Generate response with TinyLlama];
+    AC --> AD[Clean response];
+    AD --> AE[Return cleaned response];
+```
+B -- Other APIs --> AF[Other APIs for testing etc.];
 
 ### CI/CD pipeline (`.github/workflows/main.yml`)
 ```mermaid
+---
+config:
+      theme: redux
+---
 graph LR
     A[Push/Pull Request to main] --> B{Lint};
     B --> C{Black};
