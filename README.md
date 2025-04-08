@@ -78,7 +78,7 @@ graph LR
     AA --> AB;
     AB --> AC[Answer with TinyLlama];
 
-B -- Other APIs --> AF[Other APIs for testing etc - see the API documentation.];
+B -- Other APIs --> AF[Other APIs for testing etc\n - see the API documentation.];
 ```
 ### CI/CD pipeline (`.github/workflows/main.yml`)
 ```mermaid
