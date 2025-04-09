@@ -21,22 +21,23 @@ This project is created and written by Elizabeth Marcellina. This question answe
 The system retrieves relevant documents and generates insightful summaries without requiring task-specific training, optimising for versatility and generalisation across domains.
 
 ### Production-Grade Deployment
-The application is Dockerised and deployed via FastAPI, ensuring scalability, modularity, and ease of deployment in both cloud and on-premises environments. It is CPU-optimized and production-ready for smaller to medium-scale deployments, particularly in environments where CPU resources are the primary processing units. For larger, high-throughput environments, or those leveraging GPU acceleration, further optimisation and scaling strategies would be necessary.
+The application is Dockerised and deployed via FastAPI, ensuring scalability, modularity, and ease of deployment in both cloud and on-premises environments. It is CPU-optimised and production-ready for smaller to medium-scale deployments, particularly in environments where CPU resources are the primary processing units. For larger, high-throughput environments, or those leveraging GPU acceleration, further optimisation and scaling strategies would be necessary.
 
 ## Code Quality & Maintenance
 - **Pylint score**: 10/10 (ensures clean, maintainable code)
 - **CI/CD pipeline**: Fully automated with unit tests, linting, and Docker integration.
-- **Build time**: ~11 minutes (on Github Actions).
+- **Build time**: Up to ~11 minutes on Github Actions.
 
 ## Applications
 This project is highly relevant for industries requiring efficient AI-driven knowledge retrieval and document summarisation, including:
-- **Enterprise solutions**: Automating document analysis and retrieval processes.
+- **Enterprise solutions**: Automating document analysis and retrieval processes. Up 
 - **Customer support**: Providing automated answers to customer queries based on extensive document datasets.
 - **Content generation**: Summarising or generating new content derived from vast knowledge bases added by the user.
 
 ## Future Enhancements
+Here are some possible steps to enhance this project:
 - **Model performance metrics**: Planned improvements to include standard evaluation metrics like BLEU and F1 scores for better benchmarking.
-- **Optimisation**: Ongoing efforts to fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
+- **Optimisation**: Fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
 - **Frontend UI**: Development of a React.js-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. This will complete the full-stack experience, from backend API to frontend deployment.
 - **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required question-answering LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the question-answering LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, storing the LLM and transformers in a mounted volume will allow one to swap the question-answering LLMs more easily, thereby facilitating integration of more advanced LLMs into the question answering pipeline. **NB:** If one runs this software without Docker, the question anwering LLM and the other transformers will be downloaded to the local computer once and do not need to be re-downloaded.
 
