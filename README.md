@@ -38,13 +38,14 @@ This project is highly relevant for industries requiring efficient AI-driven kno
 - **Model performance metrics**: Planned improvements to include standard evaluation metrics like BLEU and F1 scores for better benchmarking.
 - **Optimisation**: Ongoing efforts to fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
 - **Frontend UI**: Development of a React.js-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. This will complete the full-stack experience, from backend API to frontend deployment.
-- **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required question-answering LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the question-answering LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, storing the LLM and transformers in a mounted volume will allow one to swap the question-answering LLMs more easily, thereby facilitating integration of more advanced LLMs into the question answering pipeline. **NB:** If one runs this software without Docker, the question anwering LLM and the other transformers will be downloaded to the local computer once and does not need to be re-downloaded.
+- **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required question-answering LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the question-answering LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, storing the LLM and transformers in a mounted volume will allow one to swap the question-answering LLMs more easily, thereby facilitating integration of more advanced LLMs into the question answering pipeline. **NB:** If one runs this software without Docker, the question anwering LLM and the other transformers will be downloaded to the local computer once and do not need to be re-downloaded.
 
 ## Access & Execution
 To run the application, simply clone the repository and follow the following steps:
 
 ### Running the FastAPI app (without Docker):
 Go to the local repo directory, and then run the following commmand:
+
 ```bash
 uvicorn app:app --reload
 ```
