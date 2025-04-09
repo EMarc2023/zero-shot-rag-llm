@@ -8,7 +8,7 @@ This project is created and written by Elizabeth Marcellina. This question answe
 ## Key Technologies
 - **Hugging Face transformers**: Pre-trained transformer models used in both retrieval and generation tasks.
 - **FAISS**: Efficient similarity search for fast, scalable document retrieval even for large-scale applications.
-- **LangChain**: Orchestrates RAG-style workflows, enabling dynamic interaction between retrieval and generation components.
+- **LangChain**: Used to create the retrieval chain that interacts with FAISS to retrieve the most relevant texts.
 - **all-MiniLM-L6-v2**: Converts the text into vectors (embeddings).
 - **BART**: Summarises contextual data from documents retrieved via FAISS. Alternatively, context sentences can be truncated using the API provided in the app.
 - **TinyLlama**: Handles tokenisation for both truncating context sentences and inputting the prompt to the model for question answering.
@@ -38,6 +38,7 @@ This project is highly relevant for industries requiring efficient AI-driven kno
 - **Model performance metrics**: Planned improvements to include standard evaluation metrics like BLEU and F1 scores for better benchmarking.
 - **Optimisation**: Ongoing efforts to fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
 - **Frontend UI**: Development of a React.js-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. This will complete the full-stack experience, from backend API to frontend deployment.
+- **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, by storing the LLM and transformers in a mounted volume will allow one to swap LLMs more easily, thereby facilitating integration of more advanced LLMs.
 
 ## Access & Execution
 ### Dockerisation
@@ -125,7 +126,7 @@ graph LR
 ```
 
 ## Known Issues and Limitations
-1. **Performance**: The system can experience slower response times, particularly with larger datasets or complex queries. This is due to the reliance on CPU optimisation and retrieval processes. For example, this project (the Dockerised version) was tested on a laptop with an Intel i7 1265U CPU + 16 GB RAM + Windows 11 and another with an Intel Core 7 150U CPU + 16 GB RAM + Windows 11. The latter laptop shows twice faster response times (especially for question answering) than the former.  
+1. **Performance**: The system can experience slower response times, particularly with larger datasets or complex queries. This is due to the reliance on CPU optimisation and retrieval processes. For example, this project (the Dockerised version) was tested on a laptop with an Intel i7 1265U CPU + 16 GB RAM + Windows 11 and another with an Intel Core 7 150U CPU + 16 GB RAM + Windows 11. The latter laptop shows twice faster response times (especially for question answering) than the former, with the latter showing response times ranging from around 20 to 30 seconds.  
 2. **Summarisation artefacts**: BART's summarisation may introduce minor artefacts that do not always align conceptually. These artefacts are generally minimal but may require further refinement for more complex data.
 3. **Response formatting**: Some responses may contain unwanted characters (e.g., extra slashes or newline characters) due to tokenisation and generation processes. However, these artefacts do not affect the functionality of the app. 
 
