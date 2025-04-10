@@ -1,6 +1,9 @@
 # Zero-Shot Retrieval Augmented Generation (RAG)-LLM: Amazon Review 2023 Dataset
 This project is created and written by Elizabeth Marcellina. This question answering chatbot software is scalable, CPU-efficient RAG-LLM application, deployable from laptops to enterprise environments. The Amazon Review 2023 dataset is a public domain dataset (with MIT License), and, for this project, I (Elizabeth) used a subset of the dataset, namely, the "Gift Cards" portion of the dataset.
 
+## Author contact
+The author (Elizabeth Marcellina) can be contacted on LinkedIn: https://www.linkedin.com/in/elizabeth-marcellina/.
+
 ## Project Overview
 - The application is Dockerised and deployed via FastAPI, ensuring scalability and modularity. It is production-ready for smaller to medium-scale deployments. It can also be further optimised for high-traffic, enterprise-level environments with more robust deployment options such as NGINX as a reverse proxy or using large-scale production-grade ASGI servers like Gunicorn.
 - This application is a CPU-optimised Retrieval Augmented Generation (RAG) system using a subset of the Amazon Review 2023 dataset, i.e. the Gift Cards dataset. The system leverages cutting-edge Natural Language Processing (NLP) techniques for efficient knowledge retrieval and document summarisation, achieving robust performance with minimal task-specific training data.
