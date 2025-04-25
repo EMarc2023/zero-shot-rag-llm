@@ -33,7 +33,7 @@ The application is Dockerised and deployed via FastAPI, ensuring scalability, mo
 
 ## Applications
 This project is highly relevant for industries requiring efficient AI-driven knowledge retrieval and document summarisation, including:
-- **Enterprise solutions**: Automating document analysis and retrieval processes. Up 
+- **Enterprise solutions**: Automating document analysis and retrieval processes. 
 - **Customer support**: Providing automated answers to customer queries based on extensive document datasets.
 - **Content generation**: Summarising or generating new content derived from vast knowledge bases added by the user.
 
