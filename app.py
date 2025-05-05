@@ -19,6 +19,7 @@ import re
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from fastapi import FastAPI, Query, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from transformers import BartTokenizer, BartForConditionalGeneration
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -41,7 +42,6 @@ bart_tokenizer = None  # pylint: disable=C0103
 bart_model = None  # pylint: disable=C0103
 llm = None  # pylint: disable=C0103
 tokenizer = None  # pylint: disable=C0103
-
 
 async def init():
     # pylint: disable=W0603
@@ -77,7 +77,6 @@ async def init():
     tokenizer = AutoTokenizer.from_pretrained(llm_model_name)
     llm = torch.compile(llm)  # Optimize model execution
 
-
 def summarize_context_bart(context):
     """Summarizes the context using BART base."""
     # Tokenize the input context using BART tokenizer to handle the max token length
@@ -96,14 +95,12 @@ def summarize_context_bart(context):
     clean_summary = bart_tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     return clean_summary
 
-
 def clean_text(text):
     """Remove non-alphanumeric characters (except spaces)."""
     text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
     # Replace multiple spaces/newlines with a single space
     text = re.sub(r"\s+", " ", text).strip()
     return text
-
 
 def get_limited_context(context, max_length_summary_local):
     """Summarizes the context using truncation."""
@@ -118,7 +115,6 @@ def get_limited_context(context, max_length_summary_local):
     )
     cleaned_decoded_context = clean_text(decoded_context)
     return cleaned_decoded_context
-
 
 def summarise_or_truncate(query, method):
     """Retrieve documents."""
@@ -137,7 +133,6 @@ def summarise_or_truncate(query, method):
         raise HTTPException(status_code=400, detail="Summarisation failed.")
     return summary
 
-
 def generate_response_with_llm(input_text):
     """Tokenise input text and generate an answer."""
     inputs = tokenizer(input_text, return_tensors="pt", truncation=True, padding=True)
@@ -153,7 +148,6 @@ def generate_response_with_llm(input_text):
     cleaned_response = clean_llm_output(response)
     return cleaned_response
 
-
 def clean_llm_output(response: str):
     """
     Clean the response from TinyLlama to return only the "Output:" part.
@@ -162,7 +156,6 @@ def clean_llm_output(response: str):
     if match:
         return match.group(1).strip()  # Extract and clean the "Output:" part
     return response.strip()  # In case "Output:" is not found
-
 
 class UserPromptRequest(BaseModel):
     """FastAPI class to take the user's input."""
@@ -180,7 +173,6 @@ class UserPromptRequest(BaseModel):
         ..., title="User prompt", description="Custom instruction for LLM generation."
     )
 
-
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     """Startup code."""
@@ -188,17 +180,31 @@ async def lifespan(_app: FastAPI):
     print("Models initialized successfully.")
     yield
 
-
 app = FastAPI(lifespan=lifespan)
 
-"""The endpoints"""
+# Add CORS middleware
+origins = [
+    "http://localhost:3000",  # Allow requests from your React frontend
+    "http://localhost",        # For potential testing without the port
+    "http://127.0.0.1:3000",  # Another common frontend address
+    "http://127.0.0.1",        # For potential testing without the port
+    "*",                      # Be cautious with this in production; allows all origins
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+"""The endpoints"""
 
 @app.get("/")
 def home():
     """The app home page."""
     return {"message": "FastAPI FAISS Retrieval API is running!"}
-
 
 # Endpoint to test FAISS retrieval
 @app.get("/search/")
@@ -206,7 +212,6 @@ def search(query: str):
     """Search for relevant texts."""
     results = retriever.invoke(query)
     return {"query": query, "results": [doc.page_content for doc in results]}
-
 
 # Endpoint to test FAISS retrieval and context
 @app.get("/search_with_context/")
@@ -216,7 +221,6 @@ def search_with_context(
     """Search for relevant texts and their summary or truncation."""
     summary = summarise_or_truncate(query, method)
     return {"query": query, "summary": summary}
-
 
 # Endpoint to test app logic
 @app.get("/answer_with_no_summary/")
@@ -228,14 +232,12 @@ def answer_with_no_summary(
     response = "Output of " + input_text
     return {"query": query, "response": response}
 
-
 @app.get("/answer_with_default_prompt/")
 def answer_with_default_prompt():
     """Get an answer from the LLM, using the default prompt."""
     default_prompt = "Hello"
     cleaned_response = generate_response_with_llm(default_prompt)
     return {"default_prompt": default_prompt, "cleaned_response": cleaned_response}
-
 
 # Testing LLM response
 @app.get("/answer/")
@@ -260,7 +262,6 @@ def answer_with_user_prompts(request: UserPromptRequest):
         "summary": summary,
         "cleaned_response": cleaned_response,
     }
-
 
 # Health check route
 @app.get("/health_check")
