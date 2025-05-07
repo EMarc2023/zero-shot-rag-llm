@@ -4,8 +4,11 @@ This project is created and written by Elizabeth Marcellina. This question answe
 ## Author Contact
 The author (Elizabeth Marcellina) can be contacted on LinkedIn: https://www.linkedin.com/in/elizabeth-marcellina/.
 
-## Frontend UI: 
+## Frontend UI 
 I have developed a TypeScript/React-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. The repo for the frontend UI can be found in: https://github.com/EMarc2023/zero-shot-rag-llm.
+
+## Build Status
+[![CI/CD Pipeline with PyLint, Unit Tests, Black, and Docker](https://github.com/EMarc2023/zero-shot-rag-llm/actions/workflows/main.yml/badge.svg)](https://github.com/EMarc2023/zero-shot-rag-llm/actions/workflows/main.yml)
 
 ## Project Overview
 - The application is Dockerised and deployed via FastAPI, ensuring scalability and modularity. It is production-ready for smaller to medium-scale deployments. It can also be further optimised for high-traffic, enterprise-level environments with more robust deployment options such as NGINX as a reverse proxy or using large-scale production-grade ASGI servers like Gunicorn.
