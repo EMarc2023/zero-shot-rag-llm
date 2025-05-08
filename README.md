@@ -43,12 +43,6 @@ This project is highly relevant for industries requiring efficient AI-driven kno
 - **Customer support**: Providing automated answers to customer queries based on extensive document datasets.
 - **Content generation**: Summarising or generating new content derived from vast knowledge bases added by the user.
 
-## Future Enhancements
-Here are some possible steps to enhance this project:
-- **Model performance metrics**: Planned improvements to include standard evaluation metrics like BLEU and F1 scores for better benchmarking.
-- **Optimisation**: Fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
-- **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required question-answering LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the question-answering LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, storing the LLM and transformers in a mounted volume will allow one to swap the question-answering LLMs more easily, thereby facilitating integration of more advanced LLMs into the question answering pipeline. **NB:** If one runs this software without Docker, the question anwering LLM and the other transformers will be downloaded to the local computer once and do not need to be re-downloaded.
-
 ## Access & Execution
 To run the application, simply clone the repository and follow the following steps:
 
@@ -140,10 +134,21 @@ graph LR
     style Stages color:#fff;
 ```
 
+## Cloud Deployment Considerations
+Given this application has been Dockerised, this application is ready to be run on cloud VMs (e.g., AWS EC2, GCP Compute Engine, Azure VMs) or scalable container orchestration systems (like AWS ECS, Kubernetes). The usual process involves pushing the Docker image to a container registry and then running it on the cloud infrastructure. 
+
+The frontend, a TypeScript/React UI currently hosted privately on AWS Amplify, is built for efficient delivery via static hosting services and CDNs. To establish communication between the deployed frontend and backend, the frontend's REACT_APP_BACKEND_API_URL setting must be updated with the backend's public URL. For portfolio cost management, the backend API is not constantly cloud-hosted but can be easily run locally.
+
 ## Known Issues and Limitations
 1. **Performance**: The system can experience slower response times, particularly with larger datasets or complex queries. This is due to the reliance on CPU optimisation and retrieval processes. For example, this project (the Dockerised version) was tested on a laptop with an Intel i7 1265U CPU + 16 GB RAM + Windows 11 and another with an Intel Core 7 150U CPU + 16 GB RAM + Windows 11. The latter laptop shows twice faster response times (especially for question answering) than the former, with the latter showing total response times ranging from around 20 to 30 seconds - from prompting, RAG, context summarisation/truncation, and answer generation.  
 2. **Summarisation artefacts**: BART's summarisation may introduce minor artefacts that do not always align conceptually. These artefacts are generally minimal but may require further refinement for more complex data.
 3. **Response formatting**: Some responses may contain unwanted characters (e.g., extra slashes or newline characters) due to tokenisation and generation processes. However, these artefacts do not affect the functionality of the app. 
+
+## Future Enhancements
+Here are some possible steps to enhance this project:
+- **Model performance metrics**: Planned improvements to include standard evaluation metrics like BLEU and F1 scores for better benchmarking.
+- **Optimisation**: Fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
+- **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required question-answering LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the question-answering LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, storing the LLM and transformers in a mounted volume will allow one to swap the question-answering LLMs more easily, thereby facilitating integration of more advanced LLMs into the question answering pipeline. **NB:** If one runs this software without Docker, the question anwering LLM and the other transformers will be downloaded to the local computer once and do not need to be re-downloaded.
 
 ## License
 This project is licensed under the terms of the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) and [MIT License](https://opensource.org/licenses/MIT).
