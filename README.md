@@ -5,7 +5,7 @@ This project is created and written by Elizabeth Marcellina. This question answe
 The author (Elizabeth Marcellina) can be contacted on LinkedIn: https://www.linkedin.com/in/elizabeth-marcellina/.
 
 ## Frontend UI 
-I have developed a TypeScript/React-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. The repo for the frontend UI can be found in: https://github.com/EMarc2023/zero-shot-rag-llm.
+I have developed a TypeScript/React-based frontend to provide a user-friendly interface, enabling easy interaction with the system and visualisation of retrieved documents and generated summaries. The repo for the frontend UI can be found in: https://github.com/EMarc2023/zero-shot-rag-llm-frontend.
 
 ## Build Status
 [![CI/CD Pipeline with PyLint, Unit Tests, Black, and Docker](https://github.com/EMarc2023/zero-shot-rag-llm/actions/workflows/main.yml/badge.svg)](https://github.com/EMarc2023/zero-shot-rag-llm/actions/workflows/main.yml)
