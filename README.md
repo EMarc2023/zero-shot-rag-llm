@@ -144,10 +144,27 @@ The frontend, a TypeScript/React UI currently hosted privately on AWS Amplify, i
 2. **Summarisation artefacts**: BART's summarisation may introduce minor artefacts that do not always align conceptually. These artefacts are generally minimal but may require further refinement for more complex data.
 3. **Response formatting**: Some responses may contain unwanted characters (e.g., extra slashes or newline characters) due to tokenisation and generation processes. However, these artefacts do not affect the functionality of the app. 
 
-## Future Enhancements
-Here are some possible steps to enhance this project:
+## Future Work and Strategic Roadmap
+
+### Towards Multi-Agent and Multi-Modal AI Systems
+These future developments aim to evolve the RAG-LLM into a more autonomous, contextually aware, and versatile AI system capable of tackling highly complex, multi-faceted business challenges by leveraging specialised AI agents and integrating multimodal inputs for a truly holistic understanding. Infrastructure considerations (e.g., transition to GPU-accelerated cloud environments) would be paramount to support these advanced capabilities.
+
+To further enhance this chatbot capabilities, scalability, and ability to tackle increasingly complex real-world challenges, two key advancements may be explored:
+
+1. Evolution Towards a Multi-Agent AI System
+Concept: Transitioning from a single, sequential pipeline to a collaborative network of specialised AI agents. Each agent would handle distinct tasks (e.g., dedicated Orchestrator, Retrieval, Reasoning, Summarisation Agents) and communicate asynchronously.
+Architectural Shifts: This involves decomposing current modular components into independent microservices (e.g., using FastAPI and Docker) and implementing a robust inter-agent communication layer (e.g.,  using message queues like Kafka).
+Benefits: This architecture enables handling multi-faceted queries, improves scalability through independent agent deployment, enhances debugging through modularity, and allows for greater specialisation and robustness in complex problem-solving.
+
+2. Integration of Multimodal AI Capabilities
+Concept: Extending the system's understanding beyond text to process and generate insights from diverse data modalities.
+Modalities: Incorporating the ability to interpret and integrate information from images, audio, and video alongside text. This would involve leveraging Multimodal Large Language Models (MLLMs).
+Benefits: Unlocks richer contextual understanding for real-world scenarios (e.g., analysing images in a document, understanding voice queries with accompanying visual data). This allows the system to tackle more comprehensive business problems that involve varied data types.
+
+### LLM metrics, fine-tuning, and persistence considerations
+
 - **Model performance metrics**: Planned improvements to include standard evaluation metrics like BLEU and F1 scores for better benchmarking.
-- **Optimisation**: Fine-tune the model and perform performance benchmarking to improve both retrieval accuracy and content generation quality.
+- **Optimisation**: The LLM used may need fine tuning so that the content generation quality can be improved.
 - **LLM and transformers persistence**: While the Docker image builds and runs the chatbot successfully, on each container startup, the required question-answering LLM and other transformers are downloaded. This adds to the startup times and dependence on the internet to run this software. For future work, persistent storage for the question-answering LLM and transformers should be mounted using Docker volumes (or a similar mechanism) to improve startup time and resource efficiency for larger-scale production deployments. Furthermore, storing the LLM and transformers in a mounted volume will allow one to swap the question-answering LLMs more easily, thereby facilitating integration of more advanced LLMs into the question answering pipeline. **NB:** If one runs this software without Docker, the question anwering LLM and the other transformers will be downloaded to the local computer once and do not need to be re-downloaded.
 
 ## License
